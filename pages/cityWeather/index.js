@@ -32,14 +32,17 @@ const CityWeather = () => {
         onChange={(e) => setCityName(e.target.value)}
       />
       <MainButton label="click me!" click={getWeatherByCityName} />
-
-      <WeatherStatus
-        image={sunImage}
-        title="آفتابی"
-        value="22c"
-        imageHeight="12px"
-        imageWidth="12px"
-      />
+      {cityWeather ? (
+        <WeatherStatus
+          image={sunImage}
+          title="آفتابی"
+          value="22c"
+          imageHeight="12px"
+          imageWidth="12px"
+        />
+      ) : (
+        <p>لطفا شهر مورد نظر را وارد کرده و ثبت کنید</p>
+      )}
     </div>
   );
 };

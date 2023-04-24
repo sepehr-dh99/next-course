@@ -4,9 +4,12 @@ import axios from "axios";
 
 import MainButton from "@/components/mainButton/mainButton";
 
+import sunImage from "@/public/images/sun.png";
+import WeatherStatus from "@/components/weatherStatus/weatherStatus";
+
 const CityWeather = () => {
   const [cityName, setCityName] = useState("");
-  const [cityWeather, setCityWeather] = useState("");
+  const [cityWeather, setCityWeather] = useState();
 
   const getWeatherByCityName = async () => {
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -22,13 +25,21 @@ const CityWeather = () => {
 
   return (
     <div id="container">
-      <h1>cod is: {cityWeather.cod}</h1>
+      <h1>cod is: {cityWeather && cityWeather.cod}</h1>
       <input
         type="text"
         placeholder="city name"
         onChange={(e) => setCityName(e.target.value)}
       />
       <MainButton label="click me!" click={getWeatherByCityName} />
+
+      <WeatherStatus
+        image={sunImage}
+        title="آفتابی"
+        value="22c"
+        imageHeight="12px"
+        imageWidth="12px"
+      />
     </div>
   );
 };
